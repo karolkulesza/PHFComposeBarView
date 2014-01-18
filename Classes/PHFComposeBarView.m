@@ -630,7 +630,8 @@ static CGFloat kTextViewToSuperviewHeightDelta;
 }
 
 - (void)updateCharCountLabel {
-    BOOL isHidden = (_maxCharCount == 0) || [self textHeight] == kTextViewFirstLineHeight;
+    NSInteger linesCount =  (NSInteger)(self.textView.contentSize.height / self.textView.font.lineHeight);
+    BOOL isHidden = (_maxCharCount == 0) || linesCount == 1;
     [[self charCountLabel] setHidden:isHidden];
 
     if (!isHidden) {
